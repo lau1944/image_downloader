@@ -173,7 +173,7 @@ class ImageDownloaderPlugin : FlutterPlugin, ActivityAware, MethodCallHandler {
                 val mimeType = applicationContext?.let { findMimeType(imageId, it) }
                 result.success(mimeType)
             }
-            else -> result.notImplemented()
+            else -> { result.notImplemented() }
         }
     }
 
@@ -343,7 +343,8 @@ class ImageDownloaderPlugin : FlutterPlugin, ActivityAware, MethodCallHandler {
                         uiThreadHandler.post {
                             channel.invokeMethod("onProgressUpdate", args)
                         }
-                    }
+                     else -> {}   
+                    } 
                 }
 
             }, onError = {
